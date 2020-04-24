@@ -9,6 +9,9 @@ player = "X"
 
 tie = False
 
+move = True
+
+
 # Function to display the board
 def display_board():
     print(board[0] + " " + "|" + " " + board[1] + " " + "|" + " " + board[2])
@@ -32,22 +35,29 @@ def play_tic_tac_toe():
 #Changes which player's turn it is
 def change_turn():
     global player
-    if player == "X":
+    global move
+    if move == True:
+         if player == "X":
         player = "0"
-    elif player == "0":
+         elif player == "0":
         player = "X"
 
 #Handles placing X or 0 on the board, along with some error handling
 def place_player():
     global player
+    global move
     print(f'''It's {player}'s turn.''')
     player_input = input('Choose a place 1-9 ')
     if player_input in ["1", "2", "3", "4", "5", "6", "7", "8", "9",] and board[int(player_input) - 1] == "-":
+        move = True
+    else:
+        move = False
+    if move:
         player_spot = int(player_input) - 1
         board[player_spot] = player
     else:
         print('That input is not valid, go again.')
-
+    return
 #checks for wins in rows
 def check_row_win():
     global winner
