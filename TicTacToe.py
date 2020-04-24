@@ -5,10 +5,6 @@ board = ["-", "-", "-",
 
 winner = None
 
-row_1_winner = False
-row_2_winner = False
-row_3_winner = False
-
 player = "X"
 
 tie = False
